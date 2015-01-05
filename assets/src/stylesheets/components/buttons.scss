@@ -1,0 +1,62 @@
+/****************************************************
+*  Buttons component
+*/
+
+.button {
+  border: 2px solid;
+  padding: 1em 2em;
+  border-radius: 40px;
+  font-size: .7em;
+  font-style: normal;
+  font-weight: 700;
+  margin: 6em auto 3em;
+  text-transform: uppercase;
+}
+
+.button__section--about {
+  border-color: $color-button-about;
+  color: $color-button-about;
+
+  &:focus,
+  &:hover {
+    color: $color-button-about-hover;
+    border-color: $color-button-about-hover;
+  }
+}
+
+.button__section--work {
+  border-color: $color-button-work;
+  color: $color-button-work;
+
+  &:focus,
+  &:hover {
+    color: $color-button-work-hover;
+    border-color: $color-button-work-hover;
+  }
+}
+
+.button__section--posts-list {
+  border-color: $color-button-posts-list;
+  color: $color-button-posts-list;
+
+  &:focus,
+  &:hover {
+    color: $color-button-posts-list-hover;
+    border-color: $color-button-posts-list-hover;
+  }
+}
+
+.button__section--contact {
+  background-color: $color-background-contact;
+  border-color: $color-button-contact;
+  color: $color-white;
+  display: block; // Allows to align it center
+  transition-duration: .2s;
+  transition-property: color, border-color; // This is an actual 'button' element, so all the transitions for 'a' elements need to be reapplied here.
+
+  &:focus,
+  &:hover {
+    border-color: $color-button-contact-hover;
+    color: $color-button-contact-hover;
+  }
+}

@@ -1,0 +1,30 @@
+/****************************************************
+*  Single post
+*/
+
+.single-post {
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4em 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-post-header {
+  width: 100%;
+}
+
+.single-post-header__meta {
+  color: $color-gray-dark;
+  font-size: .8em;
+}
+
+.single-post-content {
+  width: 100%;
+
+  ul,
+  ol {
+    font-size: 1.2em;
+  }
+}

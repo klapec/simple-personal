@@ -1,0 +1,19 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+
+<ul class="page--blog posts-list">
+  {% for post in site.posts %}
+    <li class="posts-list-item">
+      <span class="posts-list-item__meta">
+        {{ post.date | date: "%B %-d, %Y" }}
+      </span>
+      <h3 class="posts-list-item__title">
+        <a class="posts-list-item__link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </h3>
+      <a class="posts-list-item__link posts-list-item__excerpt" href="{{ post.url | prepend: site.baseurl }}">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</a>
+    </li>
+  {% endfor %}
+</ul>

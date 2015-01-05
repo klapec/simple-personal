@@ -1,0 +1,72 @@
+/****************************************************
+*  Wrappers
+*/
+
+/* Global */
+
+.wrapper--header {
+  position: fixed;
+  width: 100%;
+  background: $color-background-header;
+}
+
+.wrapper--content {
+  padding-top: 5em; // Header height compensation.
+}
+
+.wrapper--footer {
+  background-color: $color-background-footer;
+}
+
+
+
+/****************************************************
+*  Wrappers - index page
+*/
+
+.wrapper--section-intro {
+  background: $color-background-intro;
+}
+
+.wrapper--section-about {
+  background: $color-background-about;
+}
+
+.wrapper--section-work {
+  background-image: $color-background-work;
+}
+
+.wrapper--section-posts-list {
+  background: $color-background-posts-list;
+}
+
+.wrapper--section-contact {
+  background: $color-background-contact;
+}
+
+.wrapper--columns {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+
+
+/****************************************************
+*  Wrapper - single post
+*/
+
+.wrapper--single-post {
+  background: $color-background-single-post;
+}
+
+
+
+/****************************************************
+*  Wrapper - page
+*/
+
+.wrapper--page {
+  background: $color-background-page;
+}

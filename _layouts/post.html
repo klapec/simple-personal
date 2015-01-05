@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="wrapper--single-post">
+
+  <div class="single-post">
+
+    <header class="single-post-header">
+      <p class="single-post-header__meta">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </p>
+      <h2 class="single-post-header__title">{{ page.title }}</h2>
+    </header>
+
+    <article class="single-post-content">
+      {{ content }}
+    </article>
+
+  </div>
+
+</div>

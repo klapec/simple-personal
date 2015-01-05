@@ -1,0 +1,126 @@
+---
+layout: default
+---
+<div class="wrapper--section-intro">
+  <section class="section section--intro">
+    <h1 class="section__heading--intro">Frontend web developer</h1>
+  </section>
+</div>
+
+<div class="wrapper--section-about">
+  <section class="section section--about" id="section-about">
+    <h4 class="section__heading section__heading--about">About me</h4>
+    <p class="section__text section__text--about">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="wrapper--columns">
+      <div class="column column--interests">
+        <img src="{{ site.baseurl }}/assets/dest/images/code.svg" class="icon icon-interests">
+        <h3 class="column__heading">Frontend web development</h3>
+        <p class="column__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="column column--interests">
+        <img src="{{ site.baseurl }}/assets/dest/images/design.svg" class="icon icon-interests">
+        <h3 class="column__heading">Web design</h3>
+        <p class="column__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="column column--interests">
+        <img src="{{ site.baseurl }}/assets/dest/images/opensource.svg" class="icon icon-interests">
+        <h3 class="column__heading">Open source</h3>
+        <p class="column__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+    <a href="{{ site.baseurl }}/about/" class="button button__section--about">More information</a>
+  </section>
+</div>
+
+<div class="wrapper--section-work">
+  <section class="section section--work" id="section-work">
+    <h4 class="section__heading section__heading--work">Recent work</h4>
+    <div class="showcase-row">
+      <img src="{{ site.baseurl }}/assets/dest/images/1.jpg" alt="" class="showcase-image">
+      <div class="showcase-info">
+        <h2 class="showcase-info__name">DC Solutions rebranding</h2>
+        <p class="showcase-info__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+        <a href="https://www.behance.net/gallery/21834105/DC-Solutions-rebranding" class="button button__section--work button__showcase">See it in action</a>
+      </div>
+    </div>
+
+    <div class="showcase-row">
+      <img src="{{ site.baseurl }}/assets/dest/images/2.jpg" alt="" class="showcase-image">
+      <div class="showcase-info">
+        <h2 class="showcase-info__name">Functional and visual redesign of Google News</h2>
+        <p class="showcase-info__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+        <a href="https://www.behance.net/gallery/20386163/Functional-and-visual-redesign-of-Google-News" class="button button__section--work button__showcase">See it in action</a>
+      </div>
+    </div>
+
+    <div class="showcase-row">
+      <img src="{{ site.baseurl }}/assets/dest/images/3.jpg" alt="" class="showcase-image">
+      <div class="showcase-info">
+        <h2 class="showcase-info__name">MiXtravel</h2>
+        <p class="showcase-info__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+        <a href="https://www.behance.net/gallery/21911523/MiXtravel" class="button button__section--work button__showcase">See it in action</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrapper--section-posts-list">
+  <section class="section section--posts-list" id="section-posts-list">
+    <h4 class="section__heading section__heading--posts-list">Recent posts</h4>
+    <ul class="posts-list">
+    {% for post in site.posts limit:3 %}
+      <li class="posts-list-item">
+        <span class="posts-list-item__meta">
+          {{ post.date | date: "%B %-d, %Y" }}
+        </span>
+        <h3 class="posts-list-item__title">
+          <a class="posts-list-item__link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h3>
+        <a class="posts-list-item__link posts-list-item__excerpt" href="{{ post.url | prepend: site.baseurl }}">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+    <a href="{{ site.baseurl }}/blog/" class="button button__section--posts-list">More posts</a>
+  </section>
+</div>
+
+<div class="wrapper--section-contact">
+  <section class="section section--contact" id="section-contact">
+    <h4 class="section__heading section__heading--contact">Contact me</h4>
+    <form action="http://formspree.io/kontakt@andrzejklapec.pl" class="contact-form" method="post">
+      <input type="text" name="name" placeholder="Your name" class="contact-form__item" required>
+      <input type="text" name="_replyto" placeholder="Your email" class="contact-form__item" required>
+      <textarea type="email" name="body" placeholder="Message" class="contact-form__item contact-form__item--textarea" rows="4" required></textarea>
+      <input type="submit" value="Send" class="button button__section--contact">
+    </form>
+  </section>
+</div>

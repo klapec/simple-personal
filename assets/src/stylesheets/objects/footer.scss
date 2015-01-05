@@ -1,0 +1,36 @@
+/****************************************************
+*  Global footer
+*/
+
+.site-footer {
+  display: flex;
+  height: 10em;
+  color: $color-font-footer;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2em;
+  align-items: center;
+}
+
+.site-footer__list {
+  font-size: .8em;
+}
+
+.site-footer__item {
+  display: inline-block;
+
+  &:first-of-type {
+    margin-right: 4em;
+  }
+}
+
+.site-footer__title {
+  color: $color-link-footer;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.site-footer__desc {
+  color: $color-gray-light;
+  display: block;
+}

@@ -1,0 +1,130 @@
+/****************************************************
+*  Sections
+*/
+
+// Base
+
+.section {
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.section__heading {
+  border-bottom: 1px solid $color-border-base;
+  margin: 5em 0;
+  text-transform: uppercase;
+}
+
+.section__text {
+  font-size: 1.25em;
+  text-align: center;
+  font-weight: 300;
+  line-height: 2;
+  margin: 0;
+  max-width: 100%;
+}
+
+
+
+// Introduction
+
+.section--intro {
+  padding: 4em 2em;
+}
+
+// About
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  margin-top: 4em;
+}
+
+.column__text {
+  text-align: center;
+  font-size: 1em;
+  line-height: 2;
+  padding: 1em;
+  margin: 0;
+  max-width: 100%;
+}
+
+
+
+// Projects
+
+.showcase-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3em 0;
+}
+
+.showcase-image {
+  width: 500px;
+  height: 100%;
+  border: 4px solid $color-white;
+}
+
+.showcase-info {
+  margin-left: 3em;
+  flex-shrink: 1;
+  flex-basis: 500px;
+}
+
+.showcase-info__desc {
+  margin-bottom: 3em;
+}
+
+// Blog
+
+.section--posts-list {
+  max-width: 800px;
+}
+
+.posts-list {
+  list-style: none;
+  padding-left: 0;
+  max-width: 100%;
+}
+
+.posts-list-item:not(:first-of-type) {
+  padding-top: 2em;
+}
+
+.posts-list-item__meta {
+  color: $color-gray-dark;
+  font-size: .8em;
+}
+
+.posts-list-item__title {
+  margin: .2em 0;
+}
+  
+.posts-list-item__link {
+  border: 0;
+  font-style: normal;
+
+  &:hover {
+    border: 0;
+  }
+}
+
+.posts-list-item__excerpt {
+  font-style: italic;
+  font-weight: 300;
+}
+
+// Contact
+
+.section--contact {
+  max-width: 800px;
+  color: $color-white;
+}

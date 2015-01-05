@@ -1,0 +1,41 @@
+/****************************************************
+*  Forms component
+*/
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-form__item {
+  color: $color-white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid $color-black;
+  padding: 1em;
+  font-weight: 400;
+  transition-duration: .2s;
+  transition-property: border;
+  width: 100%;
+  
+  &:focus {
+    border: 2px solid $color-gray;
+
+    &::-webkit-input-placeholder {
+     color: $color-gray;
+    }
+  }
+
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+
+  &::-webkit-input-placeholder {
+   color: $color-white;
+  }
+}
+
+.contact-form__item--textarea {
+  resize: none;
+}
