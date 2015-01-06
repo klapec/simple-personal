@@ -3,7 +3,7 @@ email: john@johndoe.com
 description: Site description
 keywords: freelance, web developer, web design, development, UI designer, freelance developer, jekyll, sass, front-end developer, Joe Doe, freelance designer, freelance developer
 
-baseurl: "/simple-personal" # Change to "" for local development
+baseurl: "" # Change to "" for local development
 url: "http://klapec.github.io/simple-personal" # Change to your remote URL
 
 github: klapec

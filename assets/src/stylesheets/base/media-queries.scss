@@ -64,8 +64,10 @@
   }
 
   .showcase-row {
+    max-width: 100%;
     flex-direction: column;
     margin: 0;
+
 
     &:not(:first-of-type) {
       margin-top: 6em;

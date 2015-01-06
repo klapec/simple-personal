@@ -15,7 +15,9 @@
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="{{ page.url | prepend: site.url }}">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/dest/stylesheets/main.min.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/dest/stylesheets/main-16d77023.min.css">
+    <!-- endinject -->
     <link rel="icon" type="image/png" href="{{ site.baseurl }}/favicon-192x192.png" sizes="192x192">
   </head>
   <body>
@@ -36,7 +38,10 @@
       ga('create', 'UA-54292079-4', 'auto');
       ga('send', 'pageview');
     </script>
-    <script type="text/javascript" src="{{ site.baseurl }}/assets/dest/scripts/vendor.min.js"></script>
-    <script type="text/javascript" src="{{ site.baseurl }}/assets/dest/scripts/main.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!-- inject:js -->
+    <script src="{{ site.baseurl }}/assets/dest/scripts/main-85c6ea43.min.js"></script>
+    <script src="{{ site.baseurl }}/assets/dest/scripts/vendor-7d9578f2.min.js"></script>
+    <!-- endinject -->
   </body>
 </html>

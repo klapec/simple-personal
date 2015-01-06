@@ -12,30 +12,21 @@ var basePath = {
   dest  : 'assets/dest/'
 };
 
-// var sitePath = {
-//   dest  : '_site'
-// };
-
 var srcAssets = {
   styles        : basePath.src + 'stylesheets/',
   scripts       : basePath.src + 'scripts/',
   vendorScripts : basePath.src + 'scripts/vendor/',
-  images        : basePath.src + 'images/'
+  images        : basePath.src + 'images/',
+  svg           : basePath.src + 'svg/'
 };
 
 var destAssets = {
   styles        : basePath.dest + 'stylesheets/',
   scripts       : basePath.dest + 'scripts/',
   vendorScripts : basePath.dest + 'scripts/',
-  images        : basePath.dest + 'images/'
+  images        : basePath.dest + 'images/',
+  svg           : basePath.dest + 'svg/'
 };
-
-// var siteAssets = {
-//   styles        : sitePath.dest,
-//   scripts       : sitePath.dest,
-//   vendorScripts : sitePath.dest,
-//   images        : sitePath.dest + 'images/',
-// };
 
 function errorAlert(err) {
   $.notify.onError({
@@ -51,7 +42,7 @@ gulp.task('build', function(done) {
   return cp.spawn('jekyll', ['build'], {stdio: 'inherit'}).on('close', done);
 });
 
-gulp.task('default', ['build'], function() {
+gulp.task('default', function() {
   browserSync({
     server: {
       baseDir: '_site'
@@ -59,13 +50,14 @@ gulp.task('default', ['build'], function() {
     notify: false
   });
   gulp.watch(['*.html', '*.md', '_layouts/*.html', '_includes/*.html', '_posts/*', '_config.yml'], ['build', browserSync.reload]);
-  gulp.watch(srcAssets.styles + '**/*', ['styles', browserSync.reload]);
-  gulp.watch(srcAssets.scripts + '*', ['scripts', browserSync.reload]);
-  gulp.watch(srcAssets.vendorScripts + '**/*', ['vendorScripts', browserSync.reload]);
+  gulp.watch(srcAssets.styles + '**/*', ['injectStyles']);
+  gulp.watch(srcAssets.scripts + '*', ['injectScripts']);
+  gulp.watch(srcAssets.vendorScripts + '**/*', ['injectVendorScripts']);
   gulp.watch(srcAssets.images + '*', ['images', browserSync.reload]);
+  gulp.watch(srcAssets.svg + '*', ['svg', browserSync.reload]);
 });
 
-gulp.task('styles', function() {
+gulp.task('styles', ['cleanStyles'], function() {
   return gulp.src(srcAssets.styles + 'main.scss')
     .pipe($.plumber({errorHandler: errorAlert}))
     .pipe($.sass({
@@ -75,11 +67,11 @@ gulp.task('styles', function() {
       browsers: ['> 1%', 'last 2 versions', 'Android >= 4']
     }))
     .pipe($.minifyCss())
+    .pipe($.rev())
     .pipe($.rename({
       suffix: ".min"
     }))
     .pipe(gulp.dest(destAssets.styles))
-    // .pipe(gulp.dest(siteAssets.styles))
     .pipe($.notify({
         title: "Stylesheets recompiled",
         message: "<%= file.relative %>",
@@ -87,15 +79,18 @@ gulp.task('styles', function() {
     }));
 });
 
-gulp.task('scripts', function() {
+gulp.task('scripts', ['cleanScripts'], function() {
   return gulp.src(srcAssets.scripts + '*.js')
     .pipe($.plumber({errorHandler: errorAlert}))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.concat('main.min.js'))
+    .pipe($.concat('main.js'))
     .pipe($.uglify())
+    .pipe($.rev())
+    .pipe($.rename({
+      suffix: ".min"
+    }))
     .pipe(gulp.dest(destAssets.scripts))
-    // .pipe(gulp.dest(siteAssets.scripts))
     .pipe($.notify({
         title: "Scripts recompiled",
         message: "<%= file.relative %>",
@@ -103,13 +98,16 @@ gulp.task('scripts', function() {
     }));
 });
 
-gulp.task('vendorScripts', function() {
+gulp.task('vendorScripts', ['cleanVendorScripts'], function() {
   return gulp.src(srcAssets.vendorScripts + '**/*.js')
     .pipe($.plumber({errorHandler: errorAlert}))
-    .pipe($.concat('vendor.min.js'))
+    .pipe($.concat('vendor.js'))
     .pipe($.uglify())
+    .pipe($.rev())
+    .pipe($.rename({
+      suffix: ".min"
+    }))
     .pipe(gulp.dest(destAssets.vendorScripts))
-    // .pipe(gulp.dest(siteAssets.vendorScripts))
     .pipe($.notify({
         title: "Vendor scripts recompiled",
         message: "<%= file.relative %>",
@@ -126,10 +124,76 @@ gulp.task('images', function() {
       interlaced: true
     }))
     .pipe(gulp.dest(destAssets.images))
-    // .pipe(gulp.dest(siteAssets.images))
     .pipe($.notify({
         title: "Images optimized",
         message: "<%= file.relative %>",
         sound: "Glass"
     }));
+});
+
+gulp.task('svg', function() {
+  return gulp.src(srcAssets.svg + '*')
+    .pipe($.plumber({errorHandler: errorAlert}))
+    .pipe($.changed(destAssets.svg))
+    .pipe($.svgmin())
+    .pipe($.svgstore({ fileName: 'sprite.svg', prefix: 'icon-' }))
+    .pipe(gulp.dest(destAssets.svg))
+    .pipe($.notify({
+        title: "SVGs optimized",
+        message: "<%= file.relative %>",
+        sound: "Glass"
+    }));
+});
+
+gulp.task('cleanAll', ['cleanStyles', 'cleanScripts', 'cleanVendorScripts']);
+
+gulp.task('cleanStyles', function (cb) {
+  del('assets/dest/stylesheets/*.css', cb);
+});
+
+gulp.task('cleanScripts', function (cb) {
+  del('assets/dest/scripts/main*', cb);
+});
+
+gulp.task('cleanVendorScripts', function (cb) {
+  del('assets/dest/scripts/vendor*', cb);
+});
+
+gulp.task('injectStyles', ['styles'], function () {
+  var target = gulp.src('_layouts/default.html');
+  var sources = gulp.src('assets/dest/stylesheets/*.css', {read: false});
+
+  return target
+    .pipe($.plumber({errorHandler: errorAlert}))
+    .pipe($.inject(sources, {
+      addPrefix: "{{ site.baseurl }}",
+      addRootSlash: false
+    }))
+    .pipe(gulp.dest('./_layouts'));
+});
+
+gulp.task('injectScripts', ['scripts'], function () {
+  var target = gulp.src('_layouts/default.html');
+  var sources = gulp.src('assets/dest/scripts/main*', {read: false});
+
+  return target
+    .pipe($.plumber({errorHandler: errorAlert}))
+    .pipe($.inject(sources, {
+      addPrefix: "{{ site.baseurl }}",
+      addRootSlash: false
+    }))
+    .pipe(gulp.dest('./_layouts'));
+});
+
+gulp.task('injectVendorScripts', ['vendorScripts'], function () {
+  var target = gulp.src('_layouts/default.html');
+  var sources = gulp.src('assets/dest/scripts/vendor*', {read: false});
+
+  return target
+    .pipe($.plumber({errorHandler: errorAlert}))
+    .pipe($.inject(sources, {
+      addPrefix: "{{ site.baseurl }}",
+      addRootSlash: false
+    }))
+    .pipe(gulp.dest('./_layouts'));
 });
