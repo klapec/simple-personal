@@ -2,25 +2,33 @@
 *  IMPORTS
 */
 
+// Vendors
+@import 'vendors/normalize';
+@import 'vendors/code-highlight';
+
+// Utils - don't have any now.
+// @import 'utils/functions';
+// @import 'utils/mixins';
+
 // Base
 @import 'base/settings';
-@import 'base/normalize';
-@import 'base/code-highlight';
 @import 'base/base';
-// @import 'base/animations'; // Not used ATM
+// @import 'base/animations'; // Not used at the moment.
 
-// Objects
-@import 'objects/wrappers';
-@import 'objects/header';
-@import 'objects/footer';
-@import 'objects/sections';
-@import 'objects/single-post';
-@import 'objects/page';
+// Partials
+@import 'partials/wrappers';
+@import 'partials/header';
+@import 'partials/sections';
+@import 'partials/footer';
 
 // Components
 @import 'components/buttons';
-@import 'components/icons';
 @import 'components/forms';
+@import 'components/icons';
+
+// Pages
+@import 'pages/page';
+@import 'pages/single-post';
 
 // Media queries
 @import 'base/media-queries';
