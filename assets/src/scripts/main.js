@@ -8,7 +8,6 @@ $(function(){
     }, 1000);
   }
 
-  // FIXME: Repeating myself like a bitch. Needs to be fixed.
   $('.site-header__about').click(function(e) {
     e.preventDefault();
     scrollToElement('#section-about');

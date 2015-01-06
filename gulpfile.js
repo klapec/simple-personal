@@ -180,7 +180,8 @@ gulp.task('injectScripts', ['scripts'], function () {
     .pipe($.plumber({errorHandler: errorAlert}))
     .pipe($.inject(sources, {
       addPrefix: "{{ site.baseurl }}",
-      addRootSlash: false
+      addRootSlash: false,
+      name: "script"
     }))
     .pipe(gulp.dest('./_layouts'));
 });
@@ -193,7 +194,8 @@ gulp.task('injectVendorScripts', ['vendorScripts'], function () {
     .pipe($.plumber({errorHandler: errorAlert}))
     .pipe($.inject(sources, {
       addPrefix: "{{ site.baseurl }}",
-      addRootSlash: false
+      addRootSlash: false,
+      name: "vendorScript"
     }))
     .pipe(gulp.dest('./_layouts'));
 });
