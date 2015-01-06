@@ -135,7 +135,7 @@ gulp.task('svg', function() {
   return gulp.src(srcAssets.svg + '*')
     .pipe($.plumber({errorHandler: errorAlert}))
     .pipe($.changed(destAssets.svg))
-    .pipe($.svgmin())
+    .pipe($.imgmin())
     .pipe($.svgstore({ fileName: 'sprite.svg', prefix: 'icon-' }))
     .pipe(gulp.dest(destAssets.svg))
     .pipe($.notify({
