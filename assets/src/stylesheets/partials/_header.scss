@@ -35,3 +35,27 @@
     font-style: normal;
   }
 }
+
+
+
+/****************************************************
+*  Media queries
+*/
+
+@include media("<=tablet") {
+
+  .site-header {
+    padding: 2em 1em;
+    flex-direction: column;
+  }
+
+  .site-header__list {
+    padding: 0;
+    margin-bottom: 0;
+    font-size: 1.2em;
+  }
+
+  .site-header__item:not(:last-of-type) {
+    margin-right: 1em;
+  }
+}

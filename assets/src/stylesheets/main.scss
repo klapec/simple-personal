@@ -5,15 +5,16 @@
 // Vendors
 @import 'vendors/normalize';
 @import 'vendors/code-highlight';
+@import 'vendors/include-media';
 
-// Utils - don't have any now.
+// Utils
 // @import 'utils/functions';
 // @import 'utils/mixins';
 
 // Base
 @import 'base/settings';
 @import 'base/base';
-// @import 'base/animations'; // Not used at the moment.
+// @import 'base/animations';
 
 // Partials
 @import 'partials/wrappers';
@@ -30,5 +31,4 @@
 @import 'pages/page';
 @import 'pages/single-post';
 
-// Media queries
-@import 'base/media-queries';
+// Themes

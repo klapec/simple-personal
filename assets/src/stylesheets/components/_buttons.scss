@@ -60,3 +60,16 @@
     color: $color-button-contact-hover;
   }
 }
+
+
+
+/****************************************************
+*  Media queries
+*/
+
+@include media("<=tablet") {
+  
+  .button {
+    margin: 0;
+  }
+}

@@ -70,3 +70,24 @@
 .wrapper--page {
   background: $color-background-page;
 }
+
+
+
+/****************************************************
+*  Media queries
+*/
+
+@include media("<=tablet") {
+  
+  .wrapper--header {
+    position: relative;
+  }
+
+  .wrapper--content {
+    padding: 0;
+  }
+
+  .wrapper--columns {
+    flex-direction: column;
+  }
+}

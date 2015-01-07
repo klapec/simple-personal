@@ -194,7 +194,7 @@ gulp.task('injectVendorScripts', ['vendorScripts'], function () {
     .pipe($.inject(sources, {
       addPrefix: "{{ site.baseurl }}",
       addRootSlash: false,
-      name: "vendorScript"
+      name: "vendorScripts"
     }))
     .pipe(gulp.dest('./_layouts'));
 });

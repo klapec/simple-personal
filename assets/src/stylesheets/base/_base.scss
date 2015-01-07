@@ -116,3 +116,15 @@ td {
   padding: .5em 1em;
   text-align: center;
 }
+
+/****************************************************
+*  Media queries
+*/
+
+@include media("<=tablet") {
+  
+  body {
+    font-size: $font-size-base-mq;
+    line-height: $line-height-base-mq;
+  }
+}
