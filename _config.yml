@@ -13,7 +13,7 @@ markdown: redcarpet
 redcarpet:
   extensions: ["smart", "autolink", "tables", "no_intra_emphasis", "strikethrough", "underline", "quote", "footnotes"]
 
-exclude: ['assets/src', 'node_modules', 'package.json', 'gulpfile.js', 'LICENSE', 'README.md', 'simple-flat.sublime-project']
+exclude: ['assets/src', 'node_modules', 'package.json', 'gulpfile.js', 'LICENSE', 'README.md', 'simple-personal.sublime-project']
 
 timezone: Europe/Warsaw
 
